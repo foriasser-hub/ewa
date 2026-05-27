@@ -168,3 +168,54 @@ En cas de problème de déploiement :
 3. L'onglet **Build Logs** te dit exactement quelle ligne pose problème.
 
 Bon déploiement ! 🚀
+
+
+
+---
+
+## Étape F — Configurer le back-office `/admin`
+
+Le back-office est protégé par un mot de passe + un cookie signé.
+
+### F.1 Générer un secret de session
+
+Le cookie d'authentification est signé. Tu dois fournir un secret long et aléatoire :
+
+```bash
+openssl rand -base64 48
+```
+
+Copie la sortie (≈ 64 caractères).
+
+### F.2 Variables d'environnement
+
+Sur Vercel → **Settings → Environment Variables**, ajoute :
+
+| Nom | Valeur | Notes |
+|---|---|---|
+| `ADMIN_PASSWORD` | Un mot de passe long et fort | Au moins 16 caractères, mélange de lettres / chiffres / symboles. |
+| `ADMIN_SESSION_SECRET` | La sortie de `openssl rand -base64 48` | Ne le change que si tu veux invalider toutes les sessions actives. |
+
+En local, ajoute les mêmes lignes dans ton fichier `.env.local`.
+
+### F.3 Accéder au back-office
+
+1. Ouvre `https://ton-domaine/admin`
+2. Tu es redirigé vers `/admin/login`
+3. Saisis `ADMIN_PASSWORD`
+4. Tu accèdes au dashboard, à la sidebar et à toutes les pages CRUD.
+
+### F.4 Important — Persistance V1
+
+Le back-office utilise un store **en mémoire** dans cette V1 :
+
+- **Toutes les modifications** (création/édition/suppression de formations, articles, FAQ, témoignages) sont **perdues** au prochain redémarrage du serveur ou au prochain déploiement Vercel.
+- Les **messages reçus** via le formulaire de contact sont aussi en mémoire.
+
+Pour rendre les données persistantes, voir la section "Migration vers une base de données" dans le README. Le module `src/lib/admin/store.ts` est conçu pour être remplacé par un client Prisma sans toucher aux pages CRUD.
+
+### F.5 Bonnes pratiques
+
+- Ne mets **jamais** ton vrai `ADMIN_PASSWORD` dans Git, dans le README, dans une PR ou dans un message Slack/chat.
+- Si tu suspectes une fuite, change `ADMIN_SESSION_SECRET` dans Vercel → toutes les sessions actives sont invalidées immédiatement.
+- Utilise un gestionnaire de mots de passe (1Password, Bitwarden) pour stocker `ADMIN_PASSWORD`.
