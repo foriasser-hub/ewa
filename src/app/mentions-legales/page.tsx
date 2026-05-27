@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/lib/site-config';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Mentions légales',
-  description: `Mentions légales du site ${siteConfig.name}.`,
-};
+  description: `Mentions légales du site ${siteConfig.name} : éditeur, hébergeur, propriété intellectuelle.`,
+  path: '/mentions-legales',
+});
 
 export default function MentionsLegalesPage() {
   return (

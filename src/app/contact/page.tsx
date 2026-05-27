@@ -3,12 +3,14 @@ import { Suspense } from 'react';
 import { ContactForm } from '@/components/sections/contact/contact-form';
 import { ContactHero } from '@/components/sections/contact/contact-hero';
 import { ContactInfo } from '@/components/sections/contact/contact-info';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Contact',
   description:
-    "Contactez AKADEMIA IA MADAGASIKARA pour vous renseigner sur nos formations IA ou demander un entretien. Réponse sous 48 heures ouvrées.",
-};
+    'Contactez AKADEMIA IA MADAGASIKARA pour vous renseigner sur nos formations IA ou demander un entretien. Réponse sous 48 heures ouvrées.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (

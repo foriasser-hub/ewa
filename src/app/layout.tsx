@@ -4,6 +4,7 @@ import { Header } from '@/components/site/header';
 import { Footer } from '@/components/site/footer';
 import { CookieBanner } from '@/components/site/cookie-banner';
 import { siteConfig } from '@/lib/site-config';
+import { jsonLd, organizationJsonLd, websiteJsonLd } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -18,60 +19,82 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
+const PUBLIC_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || siteConfig.url;
+
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} — Centre de formation IA pour débutants`,
+    default: `${siteConfig.name} — Centre de formation IA pour débutants à Madagascar`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  metadataBase: new URL(siteConfig.url),
+  keywords: [
+    'formation IA',
+    'intelligence artificielle',
+    'Madagascar',
+    'Antananarivo',
+    'ChatGPT',
+    'vibe coding',
+    'design IA',
+    'apprendre IA',
+    'formation débutant',
+  ],
+  authors: [{ name: siteConfig.name, url: PUBLIC_URL }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  metadataBase: new URL(PUBLIC_URL),
+  applicationName: siteConfig.name,
+  category: 'education',
+  alternates: {
+    canonical: PUBLIC_URL,
+    languages: { 'fr-MG': PUBLIC_URL },
+  },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    siteName: siteConfig.name,
-    url: siteConfig.url,
+    url: PUBLIC_URL,
+    title: `${siteConfig.name} — Centre de formation IA pour débutants`,
     description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — Centre de formation IA pour débutants`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${siteConfig.name} — Centre de formation IA pour débutants`,
     description: siteConfig.description,
+    images: ['/opengraph-image'],
   },
-  alternates: {
-    canonical: siteConfig.url,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: [{ url: '/apple-icon.svg', type: 'image/svg+xml' }],
+  },
+  manifest: '/manifest.webmanifest',
+  formatDetection: { telephone: true, email: true, address: true },
 };
 
 export const viewport: Viewport = {
   themeColor: '#0A1F44',
-};
-
-/**
- * Schema.org Organization JSON-LD — global, injected on every page.
- */
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'EducationalOrganization',
-  name: siteConfig.name,
-  url: siteConfig.url,
-  description: siteConfig.description,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Antananarivo',
-    addressCountry: 'MG',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    email: siteConfig.contact.email,
-    telephone: siteConfig.contact.phone,
-    contactType: 'customer service',
-    availableLanguage: ['French'],
-  },
-  sameAs: [
-    siteConfig.socials.facebook,
-    siteConfig.socials.linkedin,
-    siteConfig.socials.youtube,
-  ],
+  colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -80,12 +103,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="fr-MG" className={`${inter.variable} ${jakarta.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
+        {/* Global structured data — Organization + WebSite (with SearchAction) */}
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={jsonLd(organizationJsonLd())}
+        />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={jsonLd(websiteJsonLd())}
         />
         <Header />
         <main className="flex-1">{children}</main>
