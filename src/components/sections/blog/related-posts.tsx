@@ -1,38 +1,26 @@
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { PostCover } from '@/components/sections/blog/post-cover';
-import { getLatestPosts } from '@/lib/data/posts';
+import { type Post } from '@/lib/data/posts';
 import { formatDate } from '@/lib/utils';
 
-export function LatestPosts() {
-  const posts = getLatestPosts(3);
+/**
+ * Up to 2 other posts shown at the bottom of an article.
+ * Selection is intentionally simple: take the most recent posts
+ * other than the current one.
+ */
+export function RelatedPosts({ posts }: { posts: Post[] }) {
   if (posts.length === 0) return null;
 
   return (
     <section className="bg-paper">
-      <div className="container py-16 md:py-24">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
-              Blog
-            </p>
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl">Derniers articles</h2>
-            <p className="mt-3 text-muted">
-              Conseils, tutoriels et tendances IA, écrits par notre équipe pédagogique.
-            </p>
-          </div>
-          <Button asChild variant="outline" size="md">
-            <Link href="/blog">
-              Tous les articles
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-          </Button>
-        </div>
-
-        <ul className="mt-10 grid gap-6 md:grid-cols-3">
+      <div className="container py-16 md:py-20">
+        <h2 className="font-display text-2xl font-bold text-navy-800 md:text-3xl">
+          Continuez à lire
+        </h2>
+        <ul className="mt-8 grid gap-6 md:grid-cols-2">
           {posts.map((p) => (
             <li key={p.slug}>
               <Link href={`/blog/${p.slug}`} className="group block h-full">
@@ -50,9 +38,14 @@ export function LatestPosts() {
                       {p.title}
                     </h3>
                     <p className="text-sm text-muted">{p.excerpt}</p>
-                    <p className="mt-auto pt-2 text-xs text-muted">
-                      {formatDate(p.publishedAt)}
-                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-3 text-sm font-semibold text-navy-700 transition group-hover:text-navy-800">
+                      Lire l&apos;article
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden
+                      />
+                    </span>
+                    <p className="text-xs text-muted">{formatDate(p.publishedAt)}</p>
                   </CardContent>
                 </Card>
               </Link>
