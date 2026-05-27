@@ -69,10 +69,15 @@ const config: Config = {
           from: { opacity: '0', transform: 'translateY(-8px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
+        'slide-up': {
+          from: { opacity: '0', transform: 'translateY(16px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 200ms ease-out',
         'slide-down': 'slide-down 180ms ease-out',
+        'slide-up': 'slide-up 300ms ease-out',
       },
     },
   },
