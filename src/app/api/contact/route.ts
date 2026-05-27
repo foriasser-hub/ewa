@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/contact-schema';
 import { sendContactEmail } from '@/lib/email';
+import { adminMessages } from '@/lib/admin/store';
 
 /**
  * Contact form API route.
@@ -88,6 +89,22 @@ export async function POST(req: Request) {
       { ok: false, error: 'Une erreur est survenue lors de l\u2019envoi.' },
       { status: 502 },
     );
+  }
+
+  // Persist the message in the admin store so it shows up in /admin/messages.
+  // Errors here are non-fatal: the user already got the email confirmation.
+  try {
+    adminMessages.create({
+      firstName: parsed.data.firstName,
+      lastName: parsed.data.lastName,
+      email: parsed.data.email,
+      phone: parsed.data.phone ?? '',
+      subject: parsed.data.subject,
+      formation: parsed.data.formation ?? '',
+      message: parsed.data.message,
+    });
+  } catch {
+    /* ignore */
   }
 
   return NextResponse.json({ ok: true });
