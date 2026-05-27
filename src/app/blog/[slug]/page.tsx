@@ -9,12 +9,9 @@ import { PostCover } from '@/components/sections/blog/post-cover';
 import { RelatedPosts } from '@/components/sections/blog/related-posts';
 import { FinalCta } from '@/components/sections/final-cta';
 import { mdxComponents } from '@/components/mdx/mdx-components';
-import {
-  getAllPostSlugs,
-  getAllPosts,
-  getPostBySlug,
-} from '@/lib/data/posts';
+import { getAllPostSlugs, getAllPosts, getPostBySlug } from '@/lib/data/posts';
 import { siteConfig } from '@/lib/site-config';
+import { breadcrumbsJsonLd, buildMetadata, jsonLd } from '@/lib/seo';
 import { formatDate } from '@/lib/utils';
 
 type PageProps = {
@@ -27,19 +24,20 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: PageProps): Metadata {
   const post = getPostBySlug(params.slug);
-  if (!post) return { title: 'Article introuvable' };
-
-  return {
+  if (!post) {
+    return { title: 'Article introuvable', robots: { index: false, follow: false } };
+  }
+  return buildMetadata({
     title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      publishedTime: post.publishedAt,
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: 'article',
+    publishedTime: post.publishedAt,
+  });
 }
+
+const PUBLIC_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || siteConfig.url;
 
 export default function PostPage({ params }: PageProps) {
   const post = getPostBySlug(params.slug);
@@ -50,29 +48,46 @@ export default function PostPage({ params }: PageProps) {
     .slice(0, 2);
 
   // Schema.org Article structured data
-  const jsonLd = {
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    inLanguage: 'fr-MG',
+    image: `${PUBLIC_URL}/opengraph-image`,
     author: {
       '@type': 'Organization',
       name: siteConfig.name,
+      url: PUBLIC_URL,
     },
     publisher: {
       '@type': 'Organization',
       name: siteConfig.name,
+      logo: { '@type': 'ImageObject', url: `${PUBLIC_URL}/icon.svg` },
     },
     articleSection: post.category,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${PUBLIC_URL}/blog/${post.slug}` },
   };
+
+  const breadcrumbs = breadcrumbsJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={jsonLd(articleJsonLd)}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={jsonLd(breadcrumbs)}
       />
 
       {/* Header */}

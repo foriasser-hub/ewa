@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/lib/site-config';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Politique de confidentialité',
   description: `Politique de confidentialité et protection des données d'${siteConfig.name}.`,
-};
+  path: '/politique-confidentialite',
+});
 
 export default function PolitiqueConfidentialitePage() {
   return (
@@ -15,9 +17,7 @@ export default function PolitiqueConfidentialitePage() {
         </div>
       </section>
       <article className="container max-w-3xl py-14 md:py-20 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-navy-800 [&_p]:mt-3 [&_p]:text-ink/85 [&_p]:leading-relaxed [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-ink/85 [&_li]:leading-relaxed">
-        <p>
-          Dernière mise à jour : mai 2026.
-        </p>
+        <p>Dernière mise à jour : mai 2026.</p>
 
         <h2>Responsable du traitement</h2>
         <p>
