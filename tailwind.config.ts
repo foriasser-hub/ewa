@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import animate from 'tailwindcss-animate';
 
 /**
  * Tailwind CSS configuration for AKADEMIA IA MADAGASIKARA.
@@ -59,9 +60,23 @@ const config: Config = {
       boxShadow: {
         card: '0 1px 2px rgba(10, 31, 68, 0.04), 0 8px 24px rgba(10, 31, 68, 0.06)',
       },
+      keyframes: {
+        'fade-in': {
+          from: { opacity: '0', transform: 'translateY(4px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-down': {
+          from: { opacity: '0', transform: 'translateY(-8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 200ms ease-out',
+        'slide-down': 'slide-down 180ms ease-out',
+      },
     },
   },
-  plugins: [],
+  plugins: [animate],
 };
 
 export default config;
