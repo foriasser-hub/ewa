@@ -18,11 +18,19 @@
     @apply bg-paper text-ink font-sans;
   }
 
+  /*
+   * Headings: keep the display family + tight tracking globally,
+   * but DO NOT force a colour. Sections that sit on a navy background
+   * declare `text-white` on their container, and headings should inherit
+   * that. Sections on light surfaces inherit `text-ink` from <body>.
+   * (Setting `text-navy-800` here used to make every h1/h2 on dark
+   * sections invisible — same blue on blue.)
+   */
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display tracking-tight text-navy-800;
+    @apply font-display tracking-tight;
   }
 
   ::selection {

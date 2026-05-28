@@ -59,7 +59,7 @@ export function WhyUs() {
             >
               <span
                 aria-hidden
-                className="absolute right-5 top-4 font-display text-6xl font-extrabold text-navy-50"
+                className="absolute right-5 top-4 font-display text-7xl font-extrabold text-navy-200/70"
               >
                 0{i + 1}
               </span>
