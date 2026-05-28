@@ -11,7 +11,7 @@ export function Testimonials() {
   return (
     <section className="container py-14 md:py-20">
       <div className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-800">
           Témoignages
         </p>
         <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">

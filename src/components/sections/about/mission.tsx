@@ -9,7 +9,7 @@ export function Mission() {
     <section className="container py-16 md:py-24">
       <div className="grid gap-12 md:grid-cols-2 md:items-start">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-800">
             Notre mission
           </p>
           <h2 className="mt-2 text-3xl font-bold md:text-4xl">

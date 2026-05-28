@@ -12,7 +12,7 @@ export function FormationContent({ formation }: { formation: Formation }) {
       <div className="grid gap-12 md:grid-cols-[1fr_minmax(0,300px)]">
         {/* Main column */}
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-800">
             Description
           </p>
           <h2 className="mt-2 text-3xl font-bold md:text-4xl">À propos de ce parcours</h2>

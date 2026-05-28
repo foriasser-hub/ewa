@@ -16,7 +16,7 @@ export function FeaturedFormations() {
       <div className="container py-14 md:py-20">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-800">
               Nos formations phares
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">

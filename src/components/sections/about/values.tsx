@@ -33,7 +33,7 @@ export function Values() {
     <section className="bg-paper">
       <div className="container py-16 md:py-24">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-800">
             Nos valeurs
           </p>
           <h2 className="mt-2 text-3xl font-bold md:text-4xl">

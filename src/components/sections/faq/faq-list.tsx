@@ -110,7 +110,7 @@ function FaqAccordion({ item }: { item: (typeof faqItems)[number] }) {
     <details className="group rounded-2xl border border-navy-100 bg-white shadow-card open:border-navy-200">
       <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 text-left focus-visible:rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy-600">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-600">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-800">
             {item.category}
           </p>
           <p className="mt-1 font-display text-lg font-semibold text-navy-800">
