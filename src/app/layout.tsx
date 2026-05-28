@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Bricolage_Grotesque, Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { Header } from '@/components/site/header';
 import { Footer } from '@/components/site/footer';
 import { CookieBanner } from '@/components/site/cookie-banner';
@@ -15,7 +15,16 @@ const inter = Inter({
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
+  variable: '--font-jakarta',
+  display: 'swap',
+});
+
+// Expressive editorial display face for headlines.
+// Replaces the previous use of Plus Jakarta Sans for h1/h2.
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
   variable: '--font-display',
+  weight: ['500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -94,7 +103,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr-MG" className={`${inter.variable} ${jakarta.variable}`}>
+    <html
+      lang="fr-MG"
+      className={`${inter.variable} ${jakarta.variable} ${bricolage.variable}`}
+    >
       <body className="flex min-h-screen flex-col antialiased">
         {/* Global structured data — Organization + WebSite (with SearchAction) */}
         <script

@@ -6,26 +6,21 @@ import { PostCover } from '@/components/sections/blog/post-cover';
 import { type Post } from '@/lib/data/posts';
 import { formatDate } from '@/lib/utils';
 
-/**
- * Up to 2 other posts shown at the bottom of an article.
- * Selection is intentionally simple: take the most recent posts
- * other than the current one.
- */
 export function RelatedPosts({ posts }: { posts: Post[] }) {
   if (posts.length === 0) return null;
 
   return (
     <section className="bg-paper">
-      <div className="container py-16 md:py-20">
-        <h2 className="font-display text-2xl font-bold text-navy-800 md:text-3xl">
+      <div className="container py-14 md:py-20">
+        <h2 className="font-display text-2xl font-bold tracking-tight text-navy-800 md:text-3xl">
           Continuez à lire
         </h2>
         <ul className="mt-8 grid gap-6 md:grid-cols-2">
           {posts.map((p) => (
             <li key={p.slug}>
               <Link href={`/blog/${p.slug}`} className="group block h-full">
-                <Card className="flex h-full flex-col overflow-hidden transition group-hover:-translate-y-0.5 group-hover:border-navy-200">
-                  <PostCover theme={p.coverTheme} />
+                <Card className="flex h-full flex-col overflow-hidden transition group-hover:-translate-y-1 group-hover:border-navy-200 group-hover:shadow-lg">
+                  <PostCover slug={p.slug} theme={p.coverTheme} alt={p.title} />
                   <CardContent className="flex flex-1 flex-col gap-3 p-6">
                     <div className="flex items-center gap-3 text-xs text-muted">
                       <Badge variant="default">{p.category}</Badge>
@@ -34,7 +29,7 @@ export function RelatedPosts({ posts }: { posts: Post[] }) {
                         {p.readingTime} min
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold leading-snug text-navy-800 group-hover:text-navy-700">
+                    <h3 className="font-display text-lg font-semibold leading-snug tracking-tight text-navy-800 group-hover:text-navy-700">
                       {p.title}
                     </h3>
                     <p className="text-sm text-muted">{p.excerpt}</p>

@@ -13,13 +13,15 @@ export function LatestPosts() {
 
   return (
     <section className="bg-paper">
-      <div className="container py-16 md:py-24">
+      <div className="container py-14 md:py-20">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-600">
               Blog
             </p>
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl">Derniers articles</h2>
+            <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+              Derniers articles
+            </h2>
             <p className="mt-3 text-muted">
               Conseils, tutoriels et tendances IA, écrits par notre équipe pédagogique.
             </p>
@@ -36,8 +38,8 @@ export function LatestPosts() {
           {posts.map((p) => (
             <li key={p.slug}>
               <Link href={`/blog/${p.slug}`} className="group block h-full">
-                <Card className="flex h-full flex-col overflow-hidden transition group-hover:-translate-y-0.5 group-hover:border-navy-200">
-                  <PostCover theme={p.coverTheme} />
+                <Card className="flex h-full flex-col overflow-hidden transition group-hover:-translate-y-1 group-hover:border-navy-200 group-hover:shadow-lg">
+                  <PostCover slug={p.slug} theme={p.coverTheme} alt={p.title} />
                   <CardContent className="flex flex-1 flex-col gap-3 p-6">
                     <div className="flex items-center gap-3 text-xs text-muted">
                       <Badge variant="default">{p.category}</Badge>
@@ -46,7 +48,7 @@ export function LatestPosts() {
                         {p.readingTime} min
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold leading-snug text-navy-800 group-hover:text-navy-700">
+                    <h3 className="font-display text-lg font-semibold leading-snug tracking-tight text-navy-800 group-hover:text-navy-700">
                       {p.title}
                     </h3>
                     <p className="text-sm text-muted">{p.excerpt}</p>

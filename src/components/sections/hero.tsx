@@ -1,52 +1,63 @@
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Bot, MessageSquare } from 'lucide-react';
+import { ArrowRight, Sparkles, Star, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { images } from '@/lib/data/images';
 
 /**
- * Homepage hero.
- * Two-column layout on desktop, stacked on mobile.
- * Right column shows a stylised "AI chat" mock to evoke the topic
- * without relying on photographic assets.
+ * Homepage hero — editorial split layout.
+ * Left:  pre-title, big headline, support copy, CTAs, micro-credentials
+ * Right: a real photo with a layered card that recalls the AI subject
+ *        without going overboard on illustration.
  */
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-800 text-white">
-      {/* Decorative background grid */}
+      {/* Decorative grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        className="pointer-events-none absolute inset-0 opacity-[0.16]"
         style={{
           backgroundImage:
             'linear-gradient(to right, rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.18) 1px, transparent 1px)',
-          backgroundSize: '56px 56px',
+          backgroundSize: '48px 48px',
           maskImage:
-            'radial-gradient(ellipse at top right, black 0%, black 40%, transparent 75%)',
+            'radial-gradient(ellipse at top right, black 0%, black 35%, transparent 70%)',
         }}
       />
-      {/* Soft glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -right-24 h-[460px] w-[460px] rounded-full bg-navy-500/30 blur-3xl"
+        className="pointer-events-none absolute -top-32 -right-24 h-[460px] w-[460px] rounded-full bg-navy-500/40 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-40 -left-32 h-[360px] w-[360px] rounded-full bg-navy-700/60 blur-3xl"
       />
 
-      <div className="container relative grid items-center gap-12 py-20 md:grid-cols-2 md:py-28">
+      <div className="container relative grid items-center gap-10 py-16 md:grid-cols-[1.1fr_1fr] md:gap-14 md:py-24 lg:gap-20">
+        {/* Left column */}
         <div className="flex flex-col gap-6">
-          <Badge variant="solid" className="w-fit gap-1.5 bg-white text-navy-800">
+          <Badge
+            variant="solid"
+            className="w-fit gap-1.5 bg-white/10 text-white backdrop-blur ring-1 ring-inset ring-white/20"
+          >
             <Sparkles className="h-3.5 w-3.5" aria-hidden />
-            Nouveau · Promo de lancement
+            Centre de formation IA · Antananarivo
           </Badge>
-          <h1 className="text-balance text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-            Apprenez l&apos;IA à Madagascar,
-            <br />
-            <span className="text-navy-100">même en partant de zéro.</span>
+
+          <h1 className="font-display text-balance text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+            Apprenez l&apos;IA,
+            <span className="block text-navy-100">
+              <span className="italic">même</span> en partant de zéro.
+            </span>
           </h1>
-          <p className="max-w-xl text-lg text-navy-100 md:text-xl">
-            AKADEMIA IA MADAGASIKARA forme les étudiants, les jeunes professionnels et les
-            créatifs à utiliser concrètement l&apos;Intelligence Artificielle. Sans jargon, avec
-            des projets pratiques.
+
+          <p className="max-w-xl text-lg text-navy-100/90 md:text-xl">
+            Trois parcours conçus pour les étudiants, les jeunes professionnels et les
+            créatifs malgaches. Petits groupes, projets concrets, sans jargon.
           </p>
-          <div className="flex flex-wrap gap-3 pt-2">
+
+          <div className="flex flex-wrap gap-3 pt-1">
             <Button asChild variant="secondary" size="lg">
               <Link href="/formations">
                 Voir les formations
@@ -59,105 +70,84 @@ export function Hero() {
               variant="outline"
               className="border-white/30 bg-transparent text-white hover:border-white hover:bg-white/10"
             >
-              <Link href="/contact">Nous contacter</Link>
+              <Link href="/contact">Nous écrire</Link>
             </Button>
           </div>
 
-          {/* Inline reassurance */}
-          <ul className="mt-2 flex flex-wrap gap-x-8 gap-y-2 text-sm text-navy-100/90">
-            <li className="flex items-center gap-2">
+          {/* Trust strip */}
+          <div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/10 pt-5 text-sm text-navy-100/90">
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-white" aria-hidden />
+              <span>
+                <strong className="text-white">+200</strong> apprenants formés
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Star className="h-4 w-4 text-gold" aria-hidden />
+              <span>
+                <strong className="text-white">95 %</strong> de satisfaction
+              </span>
+            </div>
+            <div className="hidden items-center gap-2 sm:flex">
               <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
-              Présentiel à Antananarivo
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
-              Cours en ligne accessibles partout
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
-              Petits groupes
-            </li>
-          </ul>
+              Présentiel à Tana + en ligne
+            </div>
+          </div>
         </div>
 
-        {/* Right: stylised AI conversation mock */}
-        <div className="relative hidden md:block">
-          <ChatMock />
+        {/* Right column: photo + floating card */}
+        <div className="relative mx-auto w-full max-w-md md:max-w-none">
+          {/* Soft shadow plate behind the picture */}
+          <div
+            aria-hidden
+            className="absolute -bottom-6 -left-6 h-[88%] w-[88%] rounded-3xl bg-navy-500/30 blur-md"
+          />
+          <div className="relative overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={images.heroPrimary}
+              alt="Apprenants en formation IA, autour d'un ordinateur portable"
+              className="aspect-[5/6] w-full object-cover"
+              loading="eager"
+              fetchPriority="high"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-navy-900/50 via-transparent to-transparent"
+            />
+          </div>
+
+          {/* Floating chip card */}
+          <div className="absolute -bottom-4 left-4 right-4 hidden rounded-2xl border border-white/10 bg-navy-900/85 p-4 shadow-card backdrop-blur sm:block md:left-auto md:right-[-1.25rem] md:max-w-[260px]">
+            <p className="text-xs uppercase tracking-[0.18em] text-navy-100">
+              Nos parcours phares
+            </p>
+            <ul className="mt-2 space-y-1.5 text-sm">
+              <li className="flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className="h-1.5 w-1.5 rounded-full bg-gold"
+                />
+                IA pour étudiants
+              </li>
+              <li className="flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className="h-1.5 w-1.5 rounded-full bg-gold"
+                />
+                Vibe coding avec Kiro
+              </li>
+              <li className="flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className="h-1.5 w-1.5 rounded-full bg-gold"
+                />
+                Design IA
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function ChatMock() {
-  return (
-    <div className="relative">
-      {/* Floating decorative card */}
-      <div
-        aria-hidden
-        className="absolute -left-6 -top-6 hidden h-32 w-32 rounded-2xl bg-gradient-to-br from-navy-500/40 to-navy-700/40 blur-md md:block"
-      />
-      <div
-        role="img"
-        aria-label="Aperçu d'une conversation avec une IA"
-        className="relative rounded-2xl border border-white/10 bg-navy-900/60 p-6 shadow-card backdrop-blur"
-      >
-        <div className="mb-4 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-sm text-navy-100">
-            <Bot className="h-4 w-4" aria-hidden />
-            Assistant IA
-          </div>
-          <div className="flex gap-1.5" aria-hidden>
-            <span className="h-2 w-2 rounded-full bg-white/30" />
-            <span className="h-2 w-2 rounded-full bg-white/30" />
-            <span className="h-2 w-2 rounded-full bg-white/60" />
-          </div>
-        </div>
-        <div className="space-y-3 text-sm">
-          <div className="flex justify-end">
-            <div className="max-w-[80%] rounded-2xl rounded-br-sm bg-white text-navy-800 px-4 py-2.5 font-medium">
-              Comment je commence à apprendre l&apos;IA ?
-            </div>
-          </div>
-          <div className="flex items-start gap-2">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-navy-600 text-white">
-              <Sparkles className="h-4 w-4" aria-hidden />
-            </div>
-            <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-navy-700 text-white px-4 py-2.5">
-              <p>
-                Avec une formation pas-à-pas pensée pour les débutants. Choisissez un parcours
-                adapté à votre profil :
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <Badge variant="solid" className="bg-white/15 text-white">
-                  IA pour étudiants
-                </Badge>
-                <Badge variant="solid" className="bg-white/15 text-white">
-                  Vibe coding avec Kiro
-                </Badge>
-                <Badge variant="solid" className="bg-white/15 text-white">
-                  Design IA
-                </Badge>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 pt-1 text-xs text-navy-100/70">
-            <MessageSquare className="h-3.5 w-3.5" aria-hidden />
-            <span>L&apos;assistant rédige une réponse...</span>
-            <span className="ml-1 inline-flex gap-0.5">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/50" />
-              <span
-                className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/50"
-                style={{ animationDelay: '120ms' }}
-              />
-              <span
-                className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/50"
-                style={{ animationDelay: '240ms' }}
-              />
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }

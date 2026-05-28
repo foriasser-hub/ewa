@@ -51,7 +51,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-jakarta)', 'sans-serif'],
+        jakarta: ['var(--font-jakarta)', 'var(--font-sans)', 'sans-serif'],
       },
       borderRadius: {
         xl: '0.875rem',

@@ -23,7 +23,7 @@ export function PostsGrid({ posts }: { posts: Post[] }) {
   }
 
   return (
-    <section className="container py-14 md:py-20">
+    <section className="container py-12 md:py-16">
       <p className="text-sm text-muted">
         {posts.length} article{posts.length > 1 ? 's' : ''}
       </p>
@@ -31,8 +31,8 @@ export function PostsGrid({ posts }: { posts: Post[] }) {
         {posts.map((p) => (
           <li key={p.slug}>
             <Link href={`/blog/${p.slug}`} className="group block h-full">
-              <Card className="flex h-full flex-col overflow-hidden transition group-hover:-translate-y-0.5 group-hover:border-navy-200">
-                <PostCover theme={p.coverTheme} />
+              <Card className="flex h-full flex-col overflow-hidden transition group-hover:-translate-y-1 group-hover:border-navy-200 group-hover:shadow-lg">
+                <PostCover slug={p.slug} theme={p.coverTheme} alt={p.title} />
                 <CardContent className="flex flex-1 flex-col gap-3 p-6">
                   <div className="flex items-center gap-3 text-xs text-muted">
                     <Badge variant="default">{p.category}</Badge>
@@ -41,7 +41,7 @@ export function PostsGrid({ posts }: { posts: Post[] }) {
                       {p.readingTime} min
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold leading-snug text-navy-800 group-hover:text-navy-700">
+                  <h3 className="font-display text-lg font-semibold leading-snug tracking-tight text-navy-800 group-hover:text-navy-700">
                     {p.title}
                   </h3>
                   <p className="text-sm text-muted">{p.excerpt}</p>

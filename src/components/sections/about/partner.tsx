@@ -1,23 +1,26 @@
-import { Building2, ChefHat, Handshake, KeyRound } from 'lucide-react';
+import { ChefHat, Handshake, KeyRound } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { images } from '@/lib/data/images';
 
 /**
  * Partner section — Le Paradissier (restaurant + furnished apartments).
- * Useful information for learners who travel from outside Antananarivo
- * to attend in-person sessions.
+ * Now uses a real photo on the right column for warmth and credibility.
  */
 export function Partner() {
   return (
     <section className="bg-paper">
-      <div className="container py-16 md:py-24">
+      <div className="container py-14 md:py-20">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-600">
             Notre partenaire
           </p>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl">Le Paradissier</h2>
+          <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+            Le Paradissier
+          </h2>
           <p className="mt-3 text-muted">
-            Pour accueillir nos apprenants venus d&apos;ailleurs ou prolonger les journées de
-            formation autour d&apos;un bon repas, nous travaillons avec Le Paradissier.
+            Pour accueillir nos apprenants venus d&apos;ailleurs ou prolonger les
+            journées de formation autour d&apos;un bon repas, nous travaillons avec Le
+            Paradissier.
           </p>
         </div>
 
@@ -31,13 +34,13 @@ export function Partner() {
                 <Badge variant="default">Partenaire officiel</Badge>
               </div>
 
-              <h3 className="mt-5 font-display text-2xl font-bold text-navy-800">
+              <h3 className="mt-5 font-display text-2xl font-bold tracking-tight text-navy-800">
                 Restaurant & appartements meublés
               </h3>
-              <p className="mt-3 text-ink/80">
-                Le Paradissier propose à la fois un restaurant accueillant et des appartements
-                meublés, parfaits pour les apprenants qui rejoignent nos sessions en présentiel à
-                Antananarivo.
+              <p className="mt-3 text-ink/85">
+                Le Paradissier propose à la fois un restaurant accueillant et des
+                appartements meublés, parfaits pour les apprenants qui rejoignent nos
+                sessions en présentiel à Antananarivo.
               </p>
 
               <ul className="mt-6 space-y-3 text-sm">
@@ -48,7 +51,8 @@ export function Partner() {
                   <div>
                     <p className="font-semibold text-navy-800">Restaurant</p>
                     <p className="text-muted">
-                      Pause déjeuner conviviale entre deux modules, dans un cadre chaleureux.
+                      Pause déjeuner conviviale entre deux modules, dans un cadre
+                      chaleureux.
                     </p>
                   </div>
                 </li>
@@ -59,31 +63,32 @@ export function Partner() {
                   <div>
                     <p className="font-semibold text-navy-800">Appartements meublés</p>
                     <p className="text-muted">
-                      Solution d&apos;hébergement pratique pour les apprenants venus d&apos;autres
-                      régions de Madagascar.
+                      Solution d&apos;hébergement pratique pour les apprenants venus
+                      d&apos;autres régions de Madagascar.
                     </p>
                   </div>
                 </li>
               </ul>
             </div>
 
-            {/* Right-hand visual block (no external image) */}
-            <div
-              aria-hidden
-              className="relative hidden md:block"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 50%), linear-gradient(135deg, #102A56, #1E3A8A 60%, #2D4A8A)',
-              }}
-            >
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-10 text-white">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-                  <Building2 className="h-8 w-8" aria-hidden />
-                </div>
-                <p className="font-display text-2xl font-bold tracking-tight">
+            {/* Right-hand visual: real photo */}
+            <div className="relative hidden min-h-[360px] md:block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={images.paradissier}
+                alt="Vue d'un restaurant accueillant — Le Paradissier"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-br from-navy-900/40 via-transparent to-navy-900/30"
+              />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="font-display text-xl font-bold tracking-tight text-white">
                   Le Paradissier
                 </p>
-                <p className="text-sm text-navy-100/90">Restaurant · Appartements meublés</p>
+                <p className="text-sm text-white/85">Restaurant · Appartements meublés</p>
               </div>
             </div>
           </div>

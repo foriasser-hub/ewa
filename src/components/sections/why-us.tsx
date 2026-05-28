@@ -1,5 +1,4 @@
 import { BookOpen, HandHeart, Wrench } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 
 const pillars = [
   {
@@ -24,31 +23,56 @@ const pillars = [
 
 export function WhyUs() {
   return (
-    <section className="container py-16 md:py-24">
-      <div className="max-w-2xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy-600">
-          Pourquoi nous
-        </p>
-        <h2 className="mt-2 text-3xl font-bold md:text-4xl">
-          Une école pensée pour les vrais débutants
-        </h2>
-        <p className="mt-3 text-muted">
-          Trois engagements simples qui font la différence quand on découvre l&apos;IA.
-        </p>
-      </div>
+    <section className="relative bg-white">
+      {/* Subtle dotted texture */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle, rgba(10, 31, 68, 0.07) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+          maskImage:
+            'radial-gradient(ellipse at center, black 0%, black 60%, transparent 100%)',
+        }}
+      />
 
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {pillars.map((p) => (
-          <Card key={p.title} className="h-full">
-            <CardContent className="p-7">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50 text-navy-700">
+      <div className="container relative py-14 md:py-20">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-navy-600">
+            Pourquoi nous
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+            Une école pensée pour les vrais débutants
+          </h2>
+          <p className="mt-3 text-muted">
+            Trois engagements simples qui font la différence quand on découvre
+            l&apos;IA.
+          </p>
+        </div>
+
+        <ul className="mt-10 grid gap-6 md:grid-cols-3">
+          {pillars.map((p, i) => (
+            <li
+              key={p.title}
+              className="group relative overflow-hidden rounded-2xl border border-navy-100 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:border-navy-200 hover:shadow-lg"
+            >
+              <span
+                aria-hidden
+                className="absolute right-5 top-4 font-display text-6xl font-extrabold text-navy-50"
+              >
+                0{i + 1}
+              </span>
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-navy-700 to-navy-800 text-white shadow-card">
                 <p.icon className="h-6 w-6" aria-hidden />
               </div>
-              <h3 className="mt-5 text-lg font-semibold">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted">{p.description}</p>
-            </CardContent>
-          </Card>
-        ))}
+              <h3 className="relative mt-5 font-display text-lg font-semibold tracking-tight text-navy-800">
+                {p.title}
+              </h3>
+              <p className="relative mt-2 text-sm text-muted">{p.description}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

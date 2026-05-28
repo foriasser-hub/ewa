@@ -120,7 +120,13 @@ export default function PostPage({ params }: PageProps) {
       </section>
 
       {/* Cover */}
-      <PostCover theme={post.coverTheme} size="lg" className="border-y border-navy-100" />
+      <PostCover
+        slug={post.slug}
+        theme={post.coverTheme}
+        size="lg"
+        alt={post.title}
+        className="border-y border-navy-100"
+      />
 
       {/* Body */}
       <article className="container max-w-3xl py-14 md:py-20">
