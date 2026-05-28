@@ -1,0 +1,57 @@
+# Netlify deployment configuration for AKADEMIA IA MADAGASIKARA.
+#
+# Netlify auto-detects the framework and installs @netlify/plugin-nextjs,
+# which enables the full Next.js feature set on Netlify's serverless runtime:
+# App Router, Server Components, Server Actions, Route Handlers (API),
+# Edge Middleware, ISR, MDX, next/image and next/font.
+#
+# Setup checklist (one-time):
+#   1. https://app.netlify.com/start  ->  "Import from Git"  ->  pick
+#      `foriasser-hub/ewa` and the `main` branch.
+#   2. In Site settings -> Environment variables, add:
+#        RESEND_API_KEY            (the new Resend key — never share)
+#        CONTACT_FROM_EMAIL        (e.g. onboarding@resend.dev)
+#        CONTACT_TO_EMAIL          (your inbox)
+#        NEXT_PUBLIC_SITE_URL      (https://<your-site>.netlify.app)
+#        ADMIN_PASSWORD            (long, random)
+#        ADMIN_SESSION_SECRET      (`openssl rand -base64 48`)
+#   3. Trigger a redeploy from the Deploys tab.
+#
+# That's it. Pushes to `main` redeploy automatically afterwards.
+
+[build]
+  command = "next build"
+  publish = ".next"
+
+[build.environment]
+  # Match the version used in development; avoids version-specific surprises.
+  NODE_VERSION = "22"
+  # Honour the npm engines field strictly.
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# The Next.js runtime plugin is what enables App Router, middleware, etc.
+# Declaring it here makes the choice explicit and version-independent.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Security headers — Netlify applies these on top of its own defaults.
+# Mirror what next.config.mjs declares for Vercel.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+
+# Don't cache admin or API responses anywhere.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "private, no-store"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "private, no-store"
