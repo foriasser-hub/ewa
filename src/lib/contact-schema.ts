@@ -57,8 +57,12 @@ export const contactSchema = z.object({
   consent: z.literal(true, {
     errorMap: () => ({ message: 'Vous devez accepter pour continuer.' }),
   }),
-  /** Honeypot — must remain empty. */
-  website: z.literal('').optional(),
+  /**
+   * Honeypot — must remain empty. We accept any string here (rather than
+   * z.literal('')) so that a bot's payload survives validation; we then
+   * detect it on the server and silently swallow the request.
+   */
+  website: z.string().max(200).optional(),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

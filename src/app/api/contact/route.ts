@@ -79,7 +79,9 @@ export async function POST(req: Request) {
   }
 
   // Honeypot — pretend success but do nothing.
-  if (parsed.data.website && parsed.data.website.length > 0) {
+  // The field is hidden from humans; if a bot fills it in, we silently
+  // accept the submission and discard it.
+  if (parsed.data.website) {
     return NextResponse.json({ ok: true, mocked: true });
   }
 
