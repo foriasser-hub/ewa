@@ -56,7 +56,6 @@ export default function PostPage({ params }: PageProps) {
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     inLanguage: 'fr-MG',
-    image: `${PUBLIC_URL}/opengraph-image`,
     author: {
       '@type': 'Organization',
       name: siteConfig.name,

@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+# Runs on every push to the static-export branch.
+# It builds the Next.js static export and publishes the resulting `out/`
+# directory to GitHub Pages.
+#
+# Required setup (one-time, in the repo Settings):
+#   Settings → Pages → Build and deployment → Source: "GitHub Actions"
+#
+# After that, every push to this branch redeploys automatically.
+
+on:
+  push:
+    branches: [static-export]
+  workflow_dispatch:
+
+# We only need read access to the repo and write access to the Pages target.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Avoid concurrent deploys overwriting each other.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        env:
+          # Tells next.config.mjs to add the /ewa basePath for GitHub Pages.
+          GH_PAGES: '1'
+          # Public site URL used in canonical, sitemap, JSON-LD.
+          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: npm run build
+
+      - name: Disable Jekyll on Pages
+        # GH Pages runs Jekyll by default and would ignore _next/* assets.
+        run: touch out/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

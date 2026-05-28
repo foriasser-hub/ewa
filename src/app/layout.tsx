@@ -56,20 +56,11 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Centre de formation IA pour débutants`,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [
-      {
-        url: '/opengraph-image',
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} — Centre de formation IA pour débutants`,
-      },
-    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: `${siteConfig.name} — Centre de formation IA pour débutants`,
     description: siteConfig.description,
-    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
