@@ -33,13 +33,15 @@ const PUBLIC_URL =
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} — Centre de formation IA pour débutants à Madagascar`,
+    default: `${siteConfig.name} — Centre de formation IA pour débutants en Afrique`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
     'formation IA',
     'intelligence artificielle',
+    'Afrique',
+    'Afrique francophone',
     'Madagascar',
     'Antananarivo',
     'ChatGPT',
@@ -62,13 +64,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: PUBLIC_URL,
-    title: `${siteConfig.name} — Centre de formation IA pour débutants`,
+    title: `${siteConfig.name} — Centre de formation IA pour débutants en Afrique`,
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
   twitter: {
     card: 'summary',
-    title: `${siteConfig.name} — Centre de formation IA pour débutants`,
+    title: `${siteConfig.name} — Centre de formation IA pour débutants en Afrique`,
     description: siteConfig.description,
   },
   robots: {

@@ -42,12 +42,13 @@ export function AboutHero() {
         </Badge>
         <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
           Démocratiser l&apos;Intelligence Artificielle
-          <span className="block text-navy-100">à Madagascar.</span>
+          <span className="block text-navy-100">en Afrique francophone.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-navy-100/95">
-          AKADEMIA IA MADAGASIKARA est un centre de formation pensé pour les débutants.
-          Notre conviction : tout le monde peut apprendre à utiliser l&apos;IA, à
-          condition d&apos;être bien accompagné.
+          L&apos;Académie IA Africaine est un centre de formation pensé pour les
+          débutants. Notre conviction : tout le monde — étudiant, jeune pro ou
+          créatif, où qu&apos;il vive sur le continent — peut apprendre à utiliser
+          l&apos;IA, à condition d&apos;être bien accompagné.
         </p>
       </div>
     </section>

@@ -34,7 +34,7 @@ export default function MentionsLegalesPage() {
         </p>
 
         <h2>Directeur de publication</h2>
-        <p>Le directeur de publication est le représentant légal d&apos;AKADEMIA IA MADAGASIKARA.</p>
+        <p>Le directeur de publication est le représentant légal d&apos;Académie IA Africaine.</p>
 
         <h2>Hébergement</h2>
         <p>
@@ -55,7 +55,7 @@ export default function MentionsLegalesPage() {
         <h2>Propriété intellectuelle</h2>
         <p>
           L&apos;ensemble des contenus du site (textes, visuels, logo, nom de marque) est la
-          propriété exclusive d&apos;AKADEMIA IA MADAGASIKARA ou de ses partenaires et est protégé
+          propriété exclusive d&apos;Académie IA Africaine ou de ses partenaires et est protégé
           par le droit de la propriété intellectuelle.
         </p>
         <p>
@@ -66,7 +66,7 @@ export default function MentionsLegalesPage() {
 
         <h2>Limitation de responsabilité</h2>
         <p>
-          AKADEMIA IA MADAGASIKARA s&apos;efforce de fournir des informations aussi précises que
+          Académie IA Africaine s&apos;efforce de fournir des informations aussi précises que
           possible. Toutefois, elle ne pourra être tenue responsable des omissions, des
           inexactitudes ou des carences dans la mise à jour, qu&apos;elles soient de son fait ou
           du fait des partenaires qui lui fournissent ces informations.

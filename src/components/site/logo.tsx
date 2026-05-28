@@ -8,7 +8,7 @@ interface LogoProps {
 }
 
 /**
- * Wordmark logo for AKADEMIA IA MADAGASIKARA.
+ * Wordmark logo for Académie IA Africaine.
  * The square mark uses a stylised "A.IA" inside a navy tile,
  * which works on both light and dark backgrounds.
  */
@@ -36,7 +36,7 @@ export function Logo({ variant = 'dark', className }: LogoProps) {
             isLight ? 'text-white' : 'text-navy-800',
           )}
         >
-          AKADEMIA IA
+          ACADÉMIE IA
         </span>
         <span
           className={cn(
@@ -44,7 +44,7 @@ export function Logo({ variant = 'dark', className }: LogoProps) {
             isLight ? 'text-navy-100' : 'text-muted',
           )}
         >
-          Madagasikara
+          Africaine
         </span>
       </span>
     </Link>

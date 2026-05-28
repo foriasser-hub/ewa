@@ -132,7 +132,10 @@ export function organizationJsonLd() {
       addressCountry: 'MG',
       streetAddress: siteConfig.contact.address,
     },
-    areaServed: { '@type': 'Country', name: 'Madagascar' },
+    areaServed: [
+      { '@type': 'Continent', name: 'Africa' },
+      { '@type': 'Country', name: 'Madagascar' },
+    ],
     contactPoint: {
       '@type': 'ContactPoint',
       email: siteConfig.contact.email,

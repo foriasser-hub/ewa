@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Contact',
   description:
-    'Contactez AKADEMIA IA MADAGASIKARA pour vous renseigner sur nos formations IA ou demander un entretien. Réponse sous 48 heures ouvrées.',
+    'Contactez Académie IA Africaine pour vous renseigner sur nos formations IA ou demander un entretien. Réponse sous 48 heures ouvrées.',
   path: '/contact',
 });
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = buildMetadata({
  * mailto: CTA. The sidebar info is unchanged.
  */
 export default function ContactPage() {
-  const subject = encodeURIComponent('Demande d\u2019information — AKADEMIA IA');
+  const subject = encodeURIComponent('Demande d\u2019information — Académie IA');
   const body = encodeURIComponent(
     [
       'Bonjour,',

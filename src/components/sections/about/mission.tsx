@@ -22,9 +22,9 @@ export function Mission() {
               condition de savoir l&apos;utiliser.
             </p>
             <p>
-              Nous avons fondé AKADEMIA IA MADAGASIKARA pour offrir aux étudiants, jeunes
-              professionnels et créatifs malgaches des parcours pas-à-pas, en français, ancrés
-              dans la réalité du terrain.
+              Nous avons fondé l&apos;Académie IA Africaine pour offrir aux étudiants,
+              jeunes professionnels et créatifs d&apos;Afrique francophone des parcours
+              pas-à-pas, en français, ancrés dans la réalité du terrain.
             </p>
             <p>
               Notre approche : pas de jargon, de la pratique dès le premier cours, et un projet

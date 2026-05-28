@@ -7,7 +7,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Nos formations IA',
   description:
-    "Découvrez les parcours d'AKADEMIA IA MADAGASIKARA : IA pour étudiants, Vibe coding avec Kiro, Design IA. Tous nos parcours sont conçus pour les débutants.",
+    "Découvrez les parcours d'Académie IA Africaine : IA pour étudiants, Vibe coding avec Kiro, Design IA. Tous nos parcours sont conçus pour les débutants.",
   path: '/formations',
 });
 

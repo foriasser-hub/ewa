@@ -8,7 +8,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Blog IA : conseils, tutoriels, tendances',
   description:
-    "Conseils, tutoriels et tendances IA pour les débutants. Le blog d'AKADEMIA IA MADAGASIKARA : ChatGPT, vibe coding, design IA, outils.",
+    "Conseils, tutoriels et tendances IA pour les débutants. Le blog d'Académie IA Africaine : ChatGPT, vibe coding, design IA, outils.",
   path: '/blog',
 });
 

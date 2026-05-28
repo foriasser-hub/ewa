@@ -21,7 +21,7 @@ export function Footer() {
           <Logo variant="light" />
           <p className="max-w-xs text-sm text-navy-100/80">
             Centre de formation à l&apos;Intelligence Artificielle pour débutants. Apprenez l&apos;IA
-            à votre rythme, en français, à Madagascar.
+            à votre rythme, en français — depuis Madagascar, ouvert à toute l&apos;Afrique.
           </p>
           <div className="flex items-center gap-3 pt-1">
             <a

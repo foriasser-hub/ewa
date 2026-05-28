@@ -42,7 +42,7 @@ export function Hero() {
             className="w-fit gap-1.5 bg-white/10 text-white backdrop-blur ring-1 ring-inset ring-white/20"
           >
             <Sparkles className="h-3.5 w-3.5" aria-hidden />
-            Centre de formation IA · Antananarivo
+            Centre de formation IA · Afrique francophone
           </Badge>
 
           <h1 className="font-display text-balance text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
@@ -54,7 +54,8 @@ export function Hero() {
 
           <p className="max-w-xl text-lg text-navy-100/90 md:text-xl">
             Trois parcours conçus pour les étudiants, les jeunes professionnels et les
-            créatifs malgaches. Petits groupes, projets concrets, sans jargon.
+            créatifs d&apos;Afrique francophone. Petits groupes, projets concrets, sans
+            jargon.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-1">
@@ -90,7 +91,7 @@ export function Hero() {
             </div>
             <div className="hidden items-center gap-2 sm:flex">
               <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
-              Présentiel à Tana + en ligne
+              Hub à Antananarivo · ouvert à toute l&apos;Afrique
             </div>
           </div>
         </div>

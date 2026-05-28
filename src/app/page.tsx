@@ -9,14 +9,14 @@ import { WhyUs } from '@/components/sections/why-us';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Centre de formation IA pour débutants à Madagascar',
+  title: 'Centre de formation IA pour débutants en Afrique',
   description:
     "Apprenez l'Intelligence Artificielle à votre rythme à Antananarivo : ChatGPT et IA pour étudiants, vibe coding avec Kiro, Design IA. Petits groupes, projets concrets, sans jargon.",
   path: '/',
 });
 
 /**
- * Homepage of AKADEMIA IA MADAGASIKARA.
+ * Homepage of Académie IA Africaine.
  * Sections are kept in dedicated files under src/components/sections/
  * for readability and reusability.
  */

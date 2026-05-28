@@ -140,7 +140,7 @@ export default function PostPage({ params }: PageProps) {
 
         <footer className="mt-16 border-t border-navy-100 pt-8">
           <p className="text-sm text-muted">
-            Publié le {formatDate(post.publishedAt)} par l&apos;équipe AKADEMIA IA.
+            Publié le {formatDate(post.publishedAt)} par l&apos;équipe Académie IA.
           </p>
         </footer>
       </article>

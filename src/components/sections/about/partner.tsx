@@ -64,7 +64,7 @@ export function Partner() {
                     <p className="font-semibold text-navy-800">Appartements meublés</p>
                     <p className="text-muted">
                       Solution d&apos;hébergement pratique pour les apprenants venus
-                      d&apos;autres régions de Madagascar.
+                      d&apos;autres villes ou d&apos;autres pays africains.
                     </p>
                   </div>
                 </li>

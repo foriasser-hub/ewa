@@ -3,13 +3,13 @@
  * Centralised so Header, Footer and metadata stay in sync.
  */
 export const siteConfig = {
-  name: 'AKADEMIA IA MADAGASIKARA',
-  shortName: 'Akademia IA',
+  name: 'Académie IA Africaine',
+  shortName: 'Académie IA',
   description:
-    "Centre de formation à l'Intelligence Artificielle pour débutants à Madagascar.",
-  url: 'https://akademia-ia.mg',
+    "Centre de formation à l'Intelligence Artificielle pour débutants en Afrique francophone. Basé à Antananarivo, ouvert à toute l'Afrique.",
+  url: 'https://academie-ia-africaine.com',
   contact: {
-    email: 'contact@akademia-ia.mg',
+    email: 'contact@academie-ia-africaine.com',
     phone: '+261 00 000 00 00',
     address: 'Antananarivo, Madagascar',
   },

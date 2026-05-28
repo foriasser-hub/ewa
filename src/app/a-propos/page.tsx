@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'À propos',
   description:
-    "Découvrez la mission, les valeurs et l'équipe d'AKADEMIA IA MADAGASIKARA, le centre de formation à l'IA pour débutants à Madagascar.",
+    "Découvrez la mission, les valeurs et l'équipe d'Académie IA Africaine, le centre de formation à l'IA pour débutants en Afrique francophone.",
   path: '/a-propos',
 });
 

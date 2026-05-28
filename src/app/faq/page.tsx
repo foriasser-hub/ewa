@@ -8,7 +8,7 @@ import { buildMetadata, jsonLd } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Questions fréquentes (FAQ)',
   description:
-    "Toutes les réponses aux questions fréquentes sur les formations IA d'AKADEMIA IA MADAGASIKARA : inscription, pédagogie, tarifs et financement.",
+    "Toutes les réponses aux questions fréquentes sur les formations IA d'Académie IA Africaine : inscription, pédagogie, tarifs et financement.",
   path: '/faq',
 });
 
